@@ -49,5 +49,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
-
+-- Neorg keymaps
+vim.keymap.set('n', '<leader>h', '<cmd>Neorg index<CR>')
 -- vim: ts=2 sts=2 sw=2 et

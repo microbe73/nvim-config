@@ -44,7 +44,9 @@ return {
               workspaces = {
                 notes = '~/notes',
                 homework = '~/homework',
+                todo = '~/todo/',
               },
+              default_workspace = 'todo',
             },
           },
         },
