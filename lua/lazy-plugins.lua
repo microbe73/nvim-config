@@ -48,7 +48,7 @@ require('lazy').setup({
 
   require 'kickstart/plugins/vimtex',
 
-  require 'kickstart/plugins/tmux-nav',
+  --  require 'kickstart/plugins/tmux-nav',
 
   require 'kickstart/plugins/nvim_tree',
 

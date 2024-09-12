@@ -1,6 +1,8 @@
+local norg_enable = { 'norg', 'tex' }
 return {
   {
     'vhyrro/luarocks.nvim',
+    ft = norg_enable,
     commit = '1db9093',
     dependencies = {
       { 'MunifTanjim/nui.nvim', commit = '61574ce' },
@@ -16,7 +18,7 @@ return {
     'nvim-neorg/neorg',
     dependencies = { 'luarocks.nvim' },
     version = 'v9.0.0',
-    ft = { 'norg', 'tex' },
+    ft = norg_enable,
     config = function()
       require('neorg').setup {
         load = {
