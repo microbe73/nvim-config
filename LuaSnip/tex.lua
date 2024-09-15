@@ -68,7 +68,7 @@ return {
   }),
 
   s(
-    { trig = 'ff', dscr = "Expands 'ff' into '\frac{}{}'" },
+    { trig = 'Ff', snippetType = 'autosnippet', dscr = "Expands 'ff' into '\\frac{}{}'" },
     fmta('\\frac{<>}{<>}', {
       i(1),
       i(2),
@@ -76,7 +76,7 @@ return {
     { condition = tex_utils.in_mathzone }
   ),
   s(
-    { trig = 'env' },
+    { trig = 'Env', snippetType = 'autosnippet' },
     fmta(
       [[
       \begin{<>}
@@ -89,6 +89,101 @@ return {
         rep(1), -- this node repeats insert node i(1)
       }
     )
+  ),
+  s(
+    { trig = 'Dfn', snippetType = 'autosnippet' },
+    fmta(
+      [[
+      \begin{dfn}{Name}
+          <>
+      \end{dfn}
+    ]],
+      {
+        i(1),
+      }
+    )
+  ),
+  s(
+    { trig = 'Thm', snippetType = 'autosnippet' },
+    fmta(
+      [[
+      \begin{thm}{Name}
+          <>
+      \end{thm}
+    ]],
+      {
+        i(1),
+      }
+    )
+  ),
+  s(
+    { trig = 'Pf', snippetType = 'autosnippet' },
+    fmta(
+      [[
+      \begin{proof}
+          <>
+      \end{proof}
+    ]],
+      {
+        i(1),
+      }
+    )
+  ),
+  s(
+    { trig = 'Pict', snippetType = 'autosnippet' },
+    fmta(
+      [[
+      \\vspace{1in}
+      \begin{tikzpicture}
+          <>
+      \end{tikzpicture}
+      \\vspace{1in}
+    ]],
+      {
+        i(1),
+      }
+    )
+  ),
+  s(
+    { trig = 'Ctr', snippetType = 'autosnippet' },
+    fmta(
+      [[
+      \begin{center}
+          <>
+      \end{center}
+    ]],
+      {
+        i(1),
+      }
+    )
+  ),
+  s(
+    { trig = 'rect', snippetType = 'autosnippet' },
+    fmta('\\draw (<>,<>) rectangle (<>,<>);', {
+      i(1),
+      i(2),
+      i(3),
+      i(4),
+    }),
+    { condition = tex_utils.in_tikz() }
+  ),
+  s(
+    { trig = 'circ', snippetType = 'autosnippet' },
+    fmta('\\draw (<>,<>) circle (<>);', {
+      i(1),
+      i(2),
+      i(3),
+    }),
+    { condition = tex_utils.in_tikz() }
+  ),
+  s(
+    { trig = 'Nd', snippetType = 'autosnippet' },
+    fmta('\\draw node at (<>,<>) {<>};', {
+      i(1),
+      i(2),
+      i(3),
+    }),
+    { condition = tex_utils.in_tikz() }
   ),
   s(
     { trig = ';cs' },
