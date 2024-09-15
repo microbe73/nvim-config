@@ -49,5 +49,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+vim.cmd "imap <silent><expr> jk luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : 'jk'"
 -- Neorg keymaps
 -- vim: ts=2 sts=2 sw=2 et

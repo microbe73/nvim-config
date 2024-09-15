@@ -68,7 +68,7 @@ return {
   }),
 
   s(
-    { trig = 'Ff', snippetType = 'autosnippet', dscr = "Expands 'ff' into '\\frac{}{}'" },
+    { trig = 'ff', snippetType = 'autosnippet', dscr = "Expands 'ff' into '\\frac{}{}'" },
     fmta('\\frac{<>}{<>}', {
       i(1),
       i(2),
