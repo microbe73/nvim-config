@@ -94,7 +94,7 @@ return {
     { trig = 'Dfn', snippetType = 'autosnippet' },
     fmta(
       [[
-      \begin{dfn}{Name}
+      \begin{dfn}{Name}{Label}
           <>
       \end{dfn}
     ]],
@@ -107,7 +107,7 @@ return {
     { trig = 'Thm', snippetType = 'autosnippet' },
     fmta(
       [[
-      \begin{thm}{Name}
+      \begin{thm}{Name}{Label}
           <>
       \end{thm}
     ]],
