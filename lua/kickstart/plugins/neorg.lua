@@ -1,4 +1,4 @@
-local norg_enable = { 'norg', 'tex' }
+local norg_enable = { 'norg' }
 return {
   {
     'vhyrro/luarocks.nvim',
