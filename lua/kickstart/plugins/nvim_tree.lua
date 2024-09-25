@@ -11,6 +11,7 @@ return {
         width = 25,
         side = 'right',
       },
+      vim.keymap.set('n', '<leader>nt', '<cmd>NvimTreeToggle<CR>'),
     }
   end,
 }

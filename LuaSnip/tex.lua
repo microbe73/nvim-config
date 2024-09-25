@@ -94,12 +94,13 @@ return {
     { trig = 'Dfn', snippetType = 'autosnippet' },
     fmta(
       [[
-      \begin{dfn}{Name}{Label}
+      \begin{dfn}{<>}{Label}
           <>
       \end{dfn}
     ]],
       {
         i(1),
+        i(2),
       }
     )
   ),
@@ -107,12 +108,13 @@ return {
     { trig = 'Thm', snippetType = 'autosnippet' },
     fmta(
       [[
-      \begin{thm}{Name}{Label}
+      \begin{thm}{<>}{Label}
           <>
       \end{thm}
     ]],
       {
         i(1),
+        i(2),
       }
     )
   ),
