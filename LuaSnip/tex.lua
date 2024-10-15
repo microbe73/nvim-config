@@ -132,6 +132,20 @@ return {
     )
   ),
   s(
+    { trig = 'Itm', snippetType = 'autosnippet' },
+    fmta(
+      [[
+      \begin{itemize}
+          <>
+      \end{itemize}
+    ]],
+      {
+        i(1),
+      }
+    )
+  ),
+
+  s(
     { trig = 'Pict', snippetType = 'autosnippet' },
     fmta(
       [[
@@ -160,7 +174,7 @@ return {
     )
   ),
   s(
-    { trig = 'rect', snippetType = 'autosnippet' },
+    { trig = 'Rect', snippetType = 'autosnippet' },
     fmta('\\draw (<>,<>) rectangle (<>,<>);', {
       i(1),
       i(2),
@@ -170,7 +184,7 @@ return {
     { condition = tex_utils.in_tikz() }
   ),
   s(
-    { trig = 'circ', snippetType = 'autosnippet' },
+    { trig = 'Circ', snippetType = 'autosnippet' },
     fmta('\\draw (<>,<>) circle (<>);', {
       i(1),
       i(2),

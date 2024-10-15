@@ -1,5 +1,5 @@
 -- Buffer to output results: generally when editing keep small and then open when saving/running
-local bufnr = 2
+local bufnr = 0
 -- C autocommand, save on write
 --
 vim.api.nvim_create_autocmd('BufWritePost', {
