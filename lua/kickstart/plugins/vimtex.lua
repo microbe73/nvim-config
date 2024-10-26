@@ -4,6 +4,7 @@ return {
     ft = 'tex',
     init = function()
       -- Use init for configuration, don't use the more common "config".
+      vim.diagnostic.config { virtual_text = false }
       vim.g.vimtex_view_method = 'sioyek'
       vim.g.vimtex_view_sioyek_exe = '/Applications/sioyek.app/Contents/MacOS/sioyek'
       vim.g.vimtex_complete_enabled = 1
