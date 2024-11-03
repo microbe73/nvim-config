@@ -23,6 +23,7 @@ return {
       require('neorg').setup {
         load = {
           ['core.defaults'] = {},
+          ['core.presenter'] = { config = { zen_mode = 'zen-mode' } },
           ['core.concealer'] = {
             config = {
               icons = {
@@ -87,6 +88,9 @@ return {
       }
       vim.wo.foldlevel = 99
       vim.wo.conceallevel = 2
+      vim.keymap.set('n', '<leader>np', '<Plug>(neorg.presenter.next-page)', {})
+      vim.keymap.set('n', '<leader>nP', '<Plug>(neorg.presenter.previous-page)', {})
+      vim.keymap.set('n', '<leader>nc', '<Plug>(neorg.presenter.close)', {})
     end,
   },
 }
