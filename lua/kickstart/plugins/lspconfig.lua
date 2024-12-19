@@ -148,8 +148,8 @@ return {
         --
         texlab = {},
         pyright = {},
-        -- coq-lsp = {},
         -- hls = { filetypes = { 'haskell', 'lhaskell', 'cabal' }, autostart = false },
+
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},

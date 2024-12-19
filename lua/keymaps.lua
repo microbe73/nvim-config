@@ -9,7 +9,6 @@ vim.cmd 'inoremap "      ""<Left>'
 vim.cmd 'inoremap {}     {}'
 vim.cmd 'inoremap ""     ""'
 vim.cmd 'tnoremap <Esc> <C-\\><C-n>'
-vim.cmd 'tnoremap <C-q> <Esc><cmd>close<CR>'
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
@@ -18,6 +17,12 @@ vim.keymap.set('n', '<leader>qo', vim.diagnostic.setqflist, { desc = 'Open diagn
 vim.keymap.set('n', '<leader>qc', '<cmd>cclose<CR>', { desc = 'Close qf list' })
 vim.keymap.set('n', '<leader>j', '<cmd>cnext<CR>', { desc = 'next qf list item' })
 vim.keymap.set('n', '<leader>k', '<cmd>cprev<CR>', { desc = 'prev qf list item' })
+vim.keymap.set('n', '<leader>st', function()
+  vim.cmd.new()
+  vim.cmd.term()
+  vim.cmd.wincmd 'J'
+  vim.api.nvim_win_set_height(0, 15)
+end, { desc = 'start terminal' })
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
