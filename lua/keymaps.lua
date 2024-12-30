@@ -59,5 +59,20 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 vim.cmd "imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' "
 vim.keymap.set('n', '<leader>Lv', '<cmd>loadview<cr>', { desc = 'load saved view, useful for folds' })
+
+vim.keymap.set('n', '<leader>Ll', function()
+  vim.cmd 'edit ~/.config/alacritty/alacritty.toml'
+  vim.cmd '%s/-dark-/-light-'
+  vim.cmd 'edit ~/.config/nvim/lua/kickstart/plugins/tokyonight.lua'
+  vim.cmd '%s/set background=dark/set background=light'
+  vim.cmd 'wqa'
+end, { desc = 'turn light mode on' })
+vim.keymap.set('n', '<leader>Ld', function()
+  vim.cmd 'edit ~/.config/alacritty/alacritty.toml'
+  vim.cmd '%s/-light-/-dark-'
+  vim.cmd 'edit ~/.config/nvim/lua/kickstart/plugins/tokyonight.lua'
+  vim.cmd '%s/set background=light/set background=dark'
+  vim.cmd 'wqa'
+end, { desc = 'turn dark mode on' })
 -- Neorg keymaps
 -- vim: ts=2 sts=2 sw=2 et

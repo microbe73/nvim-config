@@ -1,12 +1,11 @@
-vim.keymap.set('n', '<F10>', function()
-  local filename = vim.api.nvim_buf_get_name(0)
-  vim.cmd 'vsplit'
-  vim.cmd 'terminal'
-  vim.fn.feedkeys 'a'
-  local enter = vim.api.nvim_replace_termcodes('<CR>', true, true, true)
-  vim.fn.feedkeys('clear' .. enter)
-  vim.fn.feedkeys('sml ' .. filename .. enter)
-end)
+vim.cmd 'highlight DiagnosticVirtualTextInfo ctermfg = 10 guifg=LightGreen'
+vim.lsp.start {
+  name = 'coq-lsp',
+  cmd = { 'coq-lsp' },
+  filetypes = { 'coq' },
+  root_dir = vim.fs.root(0, { '.git' }),
+  single_file_support = true,
+}
 vim.diagnostic.config {
   underline = false,
   signs = { severity = { min = vim.diagnostic.severity.E } },
