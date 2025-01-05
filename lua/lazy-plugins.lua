@@ -47,7 +47,7 @@ require('lazy').setup({
 
   require 'kickstart/plugins/vimtex',
 
-  require 'kickstart/plugins/nvim_tree',
+  require 'kickstart/plugins/oil',
 
   require 'kickstart/plugins/coqtail',
 
