@@ -201,15 +201,4 @@ return {
     }),
     { condition = tex_utils.in_tikz() }
   ),
-  s(
-    { trig = ';cs' },
-    fmta(
-      [[
-      \emph{Sources and collaborations.} 
-      None. \\
-      \emph{Proof.} \\
-    ]],
-      {}
-    )
-  ),
 }

@@ -3,7 +3,7 @@ vim.lsp.start {
   name = 'coq-lsp',
   cmd = { 'coq-lsp' },
   filetypes = { 'coq' },
-  root_dir = vim.fs.root(0, { '.git' }),
+  root_dir = vim.fs.root(0, { '.git', '_CoqProject' }),
   single_file_support = true,
 }
 vim.diagnostic.config {

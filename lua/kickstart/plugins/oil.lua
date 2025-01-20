@@ -25,5 +25,6 @@ return {
       },
     }
     vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+    vim.keymap.set('n', '<leader>-', '<CMD>Oil --float<CR><CMD>set nu<CR><CMD>set rnu<CR>', { desc = 'Oil floating window' })
   end,
 }
