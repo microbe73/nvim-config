@@ -29,3 +29,11 @@ vim.keymap.set('n', '<leader>uh', function()
   get_documentation()
 end, { desc = 'get documentation for uiua function' })
 vim.keymap.set('n', '<leader>ud', '<cmd>split<CR><C-w>_100<C-w>-<cmd>edit ~/uiua-learn/uiua-chars.ua<CR><C-w>+', { desc = 'Open documentation file' })
+vim.lsp.start {
+  name = 'uiua',
+  cmd = { 'uiua', 'lsp' },
+  filetypes = { 'uiua' },
+  root_dir = vim.fn.getcwd(0, 0),
+  single_file_support = true,
+  autostart = true,
+}

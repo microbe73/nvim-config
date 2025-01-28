@@ -32,7 +32,7 @@ return {
   s({ trig = 'Inn', snippetType = 'autosnippet' }, fmta([[ induction <> .]], { i(1) })),
   s({ trig = 'Thm', snippetType = 'autosnippet' }, { t 'Theorem : ' }),
   s({ trig = 'Lma', snippetType = 'autosnippet' }, { t 'Lemma : ' }),
-  s({ trig = 'Fal', snippetType = 'autosnippet' }, { t 'forall' }),
+  s({ trig = ';fa', snippetType = 'autosnippet' }, { t 'forall' }),
   s({ trig = 'Exm', snippetType = 'autosnippet' }, { t 'Example : ' }),
   s({ trig = 'Pf', snippetType = 'autosnippet' }, { t 'Proof.' }),
   s(
