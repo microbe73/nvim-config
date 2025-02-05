@@ -9,7 +9,7 @@ vim.cmd 'inoremap "      ""<Left>'
 vim.cmd 'inoremap {}     {}'
 vim.cmd 'inoremap ""     ""'
 vim.cmd 'tnoremap <Esc> <C-\\><C-n>'
-vim.keymap.set('i', '<C-f>', '<Esc>')
+vim.keymap.set('i', '<C-f>', '<Esc>f$a')
 vim.keymap.set('i', '<C-s>', '<Esc>:')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })

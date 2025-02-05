@@ -159,6 +159,7 @@ return {
         pyright = {},
         -- hls = { filetypes = { 'haskell', 'lhaskell', 'cabal' }, autostart = false },
         millet = {},
+        marksman = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},

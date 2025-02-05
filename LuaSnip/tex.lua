@@ -36,36 +36,36 @@ tex_utils.in_tikz = function() -- TikZ picture environment detection
   return tex_utils.in_env 'tikzpicture'
 end
 return {
-  s({ trig = ';a', snippetType = 'autosnippet' }, {
-    t '\\alpha',
-  }),
-  s({ trig = ';t', snippetType = 'autosnippet' }, {
-    t '\\theta',
-  }),
-  s({ trig = ';b', snippetType = 'autosnippet' }, {
-    t '\\beta',
-  }),
-  s({ trig = ';d', snippetType = 'autosnippet' }, {
-    t '\\delta',
-  }),
-  s({ trig = ';e', snippetType = 'autosnippet' }, {
-    t '\\epsilon',
-  }),
-  s({ trig = ';g', snippetType = 'autosnippet' }, {
-    t '\\gamma',
-  }),
-  s({ trig = ';O', snippetType = 'autosnippet' }, {
-    t '\\Omega',
-  }),
-  s({ trig = ';o', snippetType = 'autosnippet' }, {
-    t '\\omega',
-  }),
-  s({ trig = ';l', snippetType = 'autosnippet' }, {
-    t '\\lambda',
-  }),
-  s({ trig = ';s', snippetType = 'autosnippet' }, {
-    t '\\sigma',
-  }),
+  --  s({ trig = ';a', snippetType = 'autosnippet' }, {
+  --    t '\\alpha',
+  --  }),
+  --  s({ trig = ';t', snippetType = 'autosnippet' }, {
+  --    t '\\theta',
+  --  }),
+  --  s({ trig = ';b', snippetType = 'autosnippet' }, {
+  --    t '\\beta',
+  --  }),
+  --  s({ trig = ';d', snippetType = 'autosnippet' }, {
+  --    t '\\delta',
+  --  }),
+  --  s({ trig = ';e', snippetType = 'autosnippet' }, {
+  --    t '\\epsilon',
+  --  }),
+  --  s({ trig = ';g', snippetType = 'autosnippet' }, {
+  --    t '\\gamma',
+  --  }),
+  --  s({ trig = ';O', snippetType = 'autosnippet' }, {
+  --    t '\\Omega',
+  --  }),
+  --  s({ trig = ';o', snippetType = 'autosnippet' }, {
+  --    t '\\omega',
+  --  }),
+  --  s({ trig = ';l', snippetType = 'autosnippet' }, {
+  --    t '\\lambda',
+  --  }),
+  --  s({ trig = ';s', snippetType = 'autosnippet' }, {
+  --    t '\\sigma',
+  --  }),
 
   s(
     { trig = 'ff', snippetType = 'autosnippet', dscr = "Expands 'ff' into '\\frac{}{}'" },

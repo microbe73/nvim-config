@@ -10,6 +10,14 @@ return {
       vim.g.vimtex_complete_close_braces = 1
       vim.g.vimtex_quickfix_open_on_warning = 0
       vim.cmd 'set conceallevel=2'
+      vim.g.vimtex_imaps_leader = ';'
+      vim.cmd [[     let g:vimtex_quickfix_ignore_filters = [
+          \ '\\headheight is too small',
+          \ 'Underfull',
+          \ 'Overfull',
+          \ 'LaTeX Warning: Label(s) may have changed',
+          \ 'Package rerunfilecheck Warning: '
+          \] ]]
       vim.cmd [[let g:vimtex_syntax_conceal = {
           \ 'accents': 1,
           \ 'ligatures': 1,
