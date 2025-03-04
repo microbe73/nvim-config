@@ -5,6 +5,7 @@ return {
     init = function()
       vim.cmd 'filetype plugin on'
       vim.cmd "let b:coqtail_coq_path = '~/.opam/default/bin/'"
+      vim.cmd 'let g:coqtail_noimap=1'
     end,
   },
   -- {

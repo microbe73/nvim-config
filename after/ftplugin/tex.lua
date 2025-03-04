@@ -9,3 +9,4 @@ vim.diagnostic.config {
     severity = { min = vim.diagnostic.severity.ERROR },
   },
 }
+vim.cmd 'set textwidth=94'

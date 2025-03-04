@@ -14,6 +14,3 @@ vim.diagnostic.config {
     severity = { min = vim.diagnostic.severity.ERROR },
   },
 }
-vim.keymap.set('n', '<leader>qo', function()
-  vim.diagnostic.setqflist { severity = { min = vim.diagnostic.severity.E } }
-end, { desc = 'Open qf list' })

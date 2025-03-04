@@ -10,12 +10,12 @@ vim.cmd 'inoremap {}     {}'
 vim.cmd 'inoremap ""     ""'
 vim.cmd 'tnoremap <Esc> <C-\\><C-n>'
 vim.keymap.set('i', '<C-f>', '<Esc>f$a')
-vim.keymap.set('i', '<C-s>', '<Esc>:')
+vim.keymap.set({ 'i', 'n' }, '<C-s>', '<Esc>:<C-f>i')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-vim.keymap.set('n', '<leader>qo', vim.diagnostic.setqflist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>qo', '<cmd>copen<CR>', { desc = 'Open[Q]uickfix list' })
 vim.keymap.set('n', '<leader>qc', '<cmd>cclose<CR>', { desc = 'Close qf list' })
 vim.keymap.set('n', '<leader>j', '<cmd>cnext<CR>', { desc = 'next qf list item' })
 vim.keymap.set('n', '<leader>k', '<cmd>cprev<CR>', { desc = 'prev qf list item' })
@@ -59,7 +59,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
-vim.cmd "imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' "
 vim.keymap.set('n', '<leader>Lv', '<cmd>loadview<cr>', { desc = 'load saved view, useful for folds' })
 
 vim.keymap.set('n', '<leader>Ll', function()
