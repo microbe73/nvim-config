@@ -8,9 +8,18 @@ vim.cmd 'inoremap {{     {'
 vim.cmd 'inoremap "      ""<Left>'
 vim.cmd 'inoremap {}     {}'
 vim.cmd 'inoremap ""     ""'
+vim.cmd 'inoremap (      ()<Left>'
+vim.cmd 'inoremap ((     ('
+vim.cmd 'inoremap ()     ()'
+vim.cmd 'inoremap [      []<Left>'
+vim.cmd 'inoremap [[     ['
+vim.cmd 'inoremap []     []'
 vim.cmd 'tnoremap <Esc> <C-\\><C-n>'
 vim.keymap.set('i', '<C-f>', '<Esc>f$a')
-vim.keymap.set({ 'i', 'n' }, '<C-s>', '<Esc>:<C-f>i')
+vim.keymap.set('i', '<C-d>', '<Esc>')
+-- vim.keymap.set('n', '<C-d>', '<C-d>zz')
+-- vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set({ 'i', 'n' }, '<C-s>', '<Esc>:')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
@@ -31,12 +40,6 @@ end, { desc = 'start terminal' })
 --
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
-
--- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -59,19 +62,29 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'qf' }, -- here you can add additional filetypes
+  callback = function(ev)
+    -- actual mapping
+    vim.api.nvim_buf_set_keymap(0, 'n', '<C-n>', '<cmd>cnfile<CR>', { noremap = true, silent = true })
+    vim.api.nvim_buf_set_keymap(0, 'n', '<C-p>', '<cmd>cpfile<CR>', { noremap = true, silent = true })
+  end,
+  group = vim.api.nvim_create_augroup('qf-maps', { clear = true }),
+})
+
 vim.keymap.set('n', '<leader>Lv', '<cmd>loadview<cr>', { desc = 'load saved view, useful for folds' })
 
 vim.keymap.set('n', '<leader>Ll', function()
   vim.cmd 'edit ~/.config/alacritty/alacritty.toml'
   vim.cmd '%s/-dark-/-light-'
-  vim.cmd 'edit ~/.config/nvim/lua/kickstart/plugins/tokyonight.lua'
+  vim.cmd 'edit ~/.config/nvim/lua/kickstart/plugins/everforest.lua'
   vim.cmd '%s/set background=dark/set background=light'
   vim.cmd 'wqa'
 end, { desc = 'turn light mode on' })
 vim.keymap.set('n', '<leader>Ld', function()
   vim.cmd 'edit ~/.config/alacritty/alacritty.toml'
   vim.cmd '%s/-light-/-dark-'
-  vim.cmd 'edit ~/.config/nvim/lua/kickstart/plugins/tokyonight.lua'
+  vim.cmd 'edit ~/.config/nvim/lua/kickstart/plugins/everforest.lua'
   vim.cmd '%s/set background=light/set background=dark'
   vim.cmd 'wqa'
 end, { desc = 'turn dark mode on' })

@@ -14,7 +14,7 @@ vim.diagnostic.config {
   },
 }
 
-vim.keymap.set('n', '<leader>Cr', function()
+--[[ vim.keymap.set('n', '<leader>Cr', function()
   vim.cmd 'vsplit'
   vim.cmd 'terminal'
   local enter = vim.api.nvim_replace_termcodes('<CR>', true, true, true)
@@ -35,3 +35,4 @@ vim.keymap.set('v', '<leader>Cn', function()
   local dist_str = string.format('%d', dist)
   vim.fn.feedkeys('y' .. dist_str .. 'k')
 end)
+--]]

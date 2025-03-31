@@ -12,6 +12,12 @@ return {
         fzf = {
           ['ctrl-q'] = 'select-all+accept',
         },
+        builtin = {
+          ['<S-Right>'] = 'toggle-preview',
+        },
+      },
+      winopts = {
+        preview = { hidden = true },
       },
     }, true)
     vim.keymap.set('n', '<leader>sh', fzf.helptags, { desc = '[S]earch [H]elp' })
@@ -22,14 +28,14 @@ return {
     vim.keymap.set('n', '<leader>sr', fzf.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>s.', fzf.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader>sb', fzf.buffers, { desc = '[ ] Find existing buffers' })
-    vim.keymap.set('n', '<leader>sq', fzf.quickfix_stack, { desc = 'search qf list history' })
+    vim.keymap.set('n', '<leader>sQ', fzf.quickfix_stack, { desc = 'search qf lists history' })
+    vim.keymap.set('n', '<leader>sq', fzf.quickfix, { desc = 'search qf list entries' })
+    vim.keymap.set('n', '<leader>sc', fzf.command_history, { desc = 'search command history' })
+    vim.keymap.set('v', '<leader>sv', fzf.grep_visual, { desc = 'Grep visual selection' })
     vim.keymap.set('n', '<leader>sn', function()
       fzf.files { cwd = '~/.config/nvim' }
     end, { desc = '[S]earch [N]eovim files' })
     vim.keymap.set('n', '<leader>sm', fzf.manpages, { desc = 'Search manual pages' })
     vim.keymap.set('n', '<leader>s/', fzf.grep_curbuf, { desc = 'Grep in current buffer' })
-    vim.keymap.set({ 'n', 'v', 'i' }, '<C-x><C-f>', function()
-      require('fzf-lua').complete_path()
-    end, { silent = true, desc = 'Fuzzy complete path' })
   end,
 }

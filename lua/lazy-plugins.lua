@@ -32,15 +32,17 @@ require('lazy').setup({
 
   require 'kickstart/plugins/cmp',
 
-  require 'kickstart/plugins/tokyonight',
+  require 'kickstart/plugins/everforest',
 
   require 'kickstart/plugins/mini',
 
   require 'kickstart/plugins/treesitter',
 
-  require 'kickstart/plugins/vimtex',
+  require 'kickstart/plugins/fzf',
 
   require 'kickstart/plugins/oil',
+
+  require 'kickstart/plugins/vimtex',
 
   require 'kickstart/plugins/coqtail',
 
@@ -55,10 +57,6 @@ require('lazy').setup({
   require 'kickstart/plugins/uiua_plug',
 
   require 'kickstart/plugins/markdown',
-
-  require 'kickstart/plugins/bqf',
-
-  require 'kickstart/plugins/fzf',
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and

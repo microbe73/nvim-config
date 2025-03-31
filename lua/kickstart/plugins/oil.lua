@@ -11,8 +11,10 @@ return {
       -- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
       default_file_explorer = true,
       columns = {
-        'icon',
+        'permissions',
+        'mtime',
         'size',
+        'icon',
       },
       lsp_file_methods = {
         -- Enable or disable LSP file operations
@@ -23,6 +25,7 @@ return {
         -- Set to "unmodified" to only save unmodified buffers
         autosave_changes = false,
       },
+      constrain_cursor = 'name',
     }
     vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
     vim.keymap.set('n', '<leader>-', '<CMD>Oil --float<CR><CMD>set nu<CR><CMD>set rnu<CR>', { desc = 'Oil floating window' })

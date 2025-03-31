@@ -184,15 +184,6 @@ return {
     { condition = tex_utils.in_tikz() }
   ),
   s(
-    { trig = 'Circ', snippetType = 'autosnippet' },
-    fmta('\\draw (<>,<>) circle (<>);', {
-      i(1),
-      i(2),
-      i(3),
-    }),
-    { condition = tex_utils.in_tikz() }
-  ),
-  s(
     { trig = 'Nd', snippetType = 'autosnippet' },
     fmta('\\draw node at (<>,<>) {<>};', {
       i(1),
