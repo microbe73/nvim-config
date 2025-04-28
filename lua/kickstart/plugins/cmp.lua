@@ -41,6 +41,7 @@ return {
         ['<Tab>'] = { 'select_and_accept', 'fallback' },
         ['<C-f>'] = { 'fallback' },
         ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
+        ['<C-space>'] = { 'show' },
       },
 
       appearance = {
@@ -54,7 +55,7 @@ return {
       -- (Default) Only show the documentation popup when manually triggered
       completion = {
         documentation = { auto_show = true },
-
+        menu = { auto_show = true },
         accept = {
           -- Write completions to the `.` register
           dot_repeat = true,
@@ -88,9 +89,7 @@ return {
       snippets = { preset = 'luasnip' },
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
-      sources = {
-        default = { 'lsp', 'path' },
-      },
+      sources = { default = { 'lsp', 'path' } },
       cmdline = {
 
         keymap = {
@@ -100,7 +99,7 @@ return {
         completion = {
           menu = {
             auto_show = function(ctx)
-              return vim.fn.getcmdtype() == ':'
+              return vim.fn.getcmdtype() == ':' and not vim.fn.getcmdline():match '^AsyncRun'
               -- enable for inputs as well, with:
               -- or vim.fn.getcmdtype() == '@'
             end,

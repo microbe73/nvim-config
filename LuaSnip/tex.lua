@@ -67,9 +67,12 @@ return {
   --    t '\\sigma',
   --  }),
 
+  s({ trig = ';o', snippetType = 'autosnippet' }, {
+    t '\\aleph',
+  }),
   s(
-    { trig = 'ff', snippetType = 'autosnippet', dscr = "Expands 'ff' into '\\frac{}{}'" },
-    fmta('\\frac{<>}{<>}', {
+    { trig = 'ff', snippetType = 'autosnippet', dscr = "Expands 'ff' into '\\frac{ }{ }'" },
+    fmta('\\frac{<> }{<> }', {
       i(1),
       i(2),
     }),

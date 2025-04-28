@@ -62,7 +62,12 @@ return {
           lualine_b = {},
           lualine_c = {},
           lualine_x = {},
-          lualine_y = {},
+          lualine_y = {
+
+            function()
+              return vim.fn.getcwd(0)
+            end,
+          },
         },
         sections = {
           lualine_a = { 'mode' },
@@ -70,12 +75,15 @@ return {
           lualine_c = {
             {
               'filename',
-              path = 3,
+              path = 4,
               newfile_status = true,
               symbols = { modified = '+', readonly = '-', unnamed = '[No Name]' },
             },
+            function()
+              return vim.g.asyncrun_status
+            end,
           },
-          lualine_x = { 'progress' },
+          lualine_x = { 'encoding', 'progress' },
           lualine_y = { 'diagnostics' },
           lualine_z = { 'location' },
         },

@@ -18,6 +18,31 @@ require('lazy').setup({
   --
   -- Use `opts = {}` to force a plugin to be loaded.
   --
+  {
+    'skywind3000/asyncrun.vim',
+    config = function()
+      vim.g.asyncrun_open = 8
+      vim.keymap.set('n', '<leader>ag', function()
+        vim.fn.feedkeys 'q:iAsyncRun rg --vimgrep '
+      end, { desc = 'Async Run grep' })
+      vim.keymap.set('n', '<leader>aa', function()
+        vim.fn.feedkeys 'q:iAsyncRun '
+      end, { desc = 'Async Run Command' })
+      vim.keymap.set('n', '<leader>at', function()
+        vim.fn.feedkeys 'q:iAsyncRun -mode=term -pos=tab '
+      end, { desc = 'Async Run Command in new terminal' })
+    end,
+  },
+  {
+    'ronakg/quickr-preview.vim',
+    config = function()
+      vim.g.quickr_preview_keymaps = 0
+      vim.g.quickr_preview_size = '8'
+      vim.g.quickr_preview_options = 'number norelativenumber nofoldenable'
+      vim.cmd 'nmap <leader>qp <plug>(quickr_preview)'
+      vim.cmd 'nmap <leader>qc <plug>(quickr_preview_qf_close)'
+    end,
+  },
 
   -- modular approach: using `require 'path/name'` will
   -- include a plugin definition from file lua/path/name.lua
@@ -50,13 +75,13 @@ require('lazy').setup({
 
   require 'kickstart/plugins/sml_better',
 
-  require 'kickstart/plugins/nabla',
-
   require 'kickstart/plugins/zen-mode',
 
   require 'kickstart/plugins/uiua_plug',
 
-  require 'kickstart/plugins/markdown',
+  require 'kickstart/plugins/luarocks',
+
+  require 'kickstart/plugins/image',
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and

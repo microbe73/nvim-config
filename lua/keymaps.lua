@@ -21,13 +21,11 @@ vim.keymap.set('i', '<C-d>', '<Esc>')
 -- vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set({ 'i', 'n' }, '<C-s>', '<Esc>:')
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>qo', '<cmd>copen<CR>', { desc = 'Open[Q]uickfix list' })
-vim.keymap.set('n', '<leader>qc', '<cmd>cclose<CR>', { desc = 'Close qf list' })
-vim.keymap.set('n', '<leader>j', '<cmd>cnext<CR>', { desc = 'next qf list item' })
-vim.keymap.set('n', '<leader>k', '<cmd>cprev<CR>', { desc = 'prev qf list item' })
+vim.keymap.set('n', '<leader>qd', vim.diagnostic.setqflist, { desc = 'Show diagnostics in quickfix list ' })
+vim.keymap.set('n', ']q', '<cmd>cnext<CR>', { desc = 'next qf list item' })
+vim.keymap.set('n', '[q', '<cmd>cprev<CR>', { desc = 'prev qf list item' })
 vim.keymap.set('n', '<leader>st', function()
   vim.cmd.new()
   vim.cmd.term()
@@ -75,16 +73,18 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.keymap.set('n', '<leader>Lv', '<cmd>loadview<cr>', { desc = 'load saved view, useful for folds' })
 
 vim.keymap.set('n', '<leader>Ll', function()
-  vim.cmd 'edit ~/.config/alacritty/alacritty.toml'
-  vim.cmd '%s/-dark-/-light-'
-  vim.cmd 'edit ~/.config/nvim/lua/kickstart/plugins/everforest.lua'
+  vim.cmd 'edit ~/.config/kitty/kitty.conf'
+  vim.cmd '%s/2d353b/fdf6e3'
+  vim.cmd '%s/d3c6aa/5c6a72'
+  vim.cmd 'edit ~/.config/nvim/lua/options.lua'
   vim.cmd '%s/set background=dark/set background=light'
   vim.cmd 'wqa'
 end, { desc = 'turn light mode on' })
 vim.keymap.set('n', '<leader>Ld', function()
-  vim.cmd 'edit ~/.config/alacritty/alacritty.toml'
-  vim.cmd '%s/-light-/-dark-'
-  vim.cmd 'edit ~/.config/nvim/lua/kickstart/plugins/everforest.lua'
+  vim.cmd 'edit ~/.config/kitty/kitty.conf'
+  vim.cmd '%s/fdf6e3/2d353b'
+  vim.cmd '%s/5c6a72/d3c6aa'
+  vim.cmd 'edit ~/.config/nvim/lua/options.lua'
   vim.cmd '%s/set background=light/set background=dark'
   vim.cmd 'wqa'
 end, { desc = 'turn dark mode on' })

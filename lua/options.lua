@@ -52,7 +52,6 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
-
 -- Show which line your cursor is on
 vim.opt.cursorline = false
 vim.g.have_nerd_font = true
@@ -63,9 +62,12 @@ vim.opt.shiftwidth = 4
 vim.cmd 'set tabstop=4'
 vim.cmd 'set expandtab'
 vim.cmd 'set smarttab'
-vim.cmd 'set autochdir'
 vim.cmd 'set makeprg=make'
 vim.cmd 'set grepprg=rg\\ --vimgrep'
+vim.cmd 'set redrawtime=6000'
+vim.cmd 'set autochdir'
 -- vim: ts=2 sts=2 sw=2 et
 vim.cmd 'autocmd BufNewFile,BufRead *.fs set filetype=forth'
 vim.diagnostic.config { virtual_text = true }
+-- color
+vim.cmd 'set background=light'

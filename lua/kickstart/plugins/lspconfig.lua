@@ -64,9 +64,6 @@ return {
             vim.lsp.buf.definition { reuse_win = true }
           end, '[G]oto [D]efinition')
 
-          -- Find references for the word under your cursor.
-          map('gr', vim.lsp.buf.references, '[G]oto [R]eferences')
-
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
           map('gI', function()
@@ -157,10 +154,20 @@ return {
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
         --
-        texlab = {},
-        pyright = {},
+        -- texlab = {},
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                diagnosticSeverityOverrides = {
+                  reportUnusedExpression = 'none',
+                },
+              },
+            },
+          },
+        },
         millet = {},
-        -- hls = { filetypes = { 'haskell', 'lhaskell', 'cabal' }, autostart = false },
+        hls = { filetypes = { 'haskell', 'lhaskell', 'cabal' } },
         marksman = {},
         lua_ls = {
           -- cmd = {...},

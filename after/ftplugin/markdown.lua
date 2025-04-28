@@ -1,0 +1,1 @@
+-- file: nvim/ftplugin/markdown.lua
