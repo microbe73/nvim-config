@@ -14,3 +14,5 @@ vim.diagnostic.config {
     severity = { min = vim.diagnostic.severity.ERROR },
   },
 }
+vim.cmd 'set errorformat+=%f:%l.%c-%e.%k%m'
+vim.keymap.set('n', '<leader>ab', 'q:iAsyncRun ml-build ')

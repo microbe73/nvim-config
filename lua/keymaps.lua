@@ -88,5 +88,14 @@ vim.keymap.set('n', '<leader>Ld', function()
   vim.cmd '%s/set background=light/set background=dark'
   vim.cmd 'wqa'
 end, { desc = 'turn dark mode on' })
+--[[
+vim.keymap.set('n', '<leader>es', '<cmd>vsplit<CR><cmd>e tmp73.txt<CR>12<C-w><<C-W>h', { desc = 'start easycrypt window' })
+vim.keymap.set('n', '<leader>er', function()
+  vim.cmd 'wall'
+  vim.cmd 'AsyncRun cat "$(VIM_FILENAME)" | easycrypt > tmp73.txt'
+end, { desc = 'run easycrypt command' })
+vim.keymap.set('n', '<leader>ew', '<C-W>l<cmd>e! tmp73.txt<CR>gg0/check<CR>NVggd<C-W>h', { desc = 'display easycrypt window' })
+]]
+--
 -- Neorg keymaps
 -- vim: ts=2 sts=2 sw=2 et

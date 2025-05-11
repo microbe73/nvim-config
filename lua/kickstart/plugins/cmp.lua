@@ -41,7 +41,8 @@ return {
         ['<Tab>'] = { 'select_and_accept', 'fallback' },
         ['<C-f>'] = { 'fallback' },
         ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
-        ['<C-space>'] = { 'show' },
+        ['<C-space>'] = { 'show_documentation' },
+        ['<C-e>'] = { 'hide', 'show' },
       },
 
       appearance = {

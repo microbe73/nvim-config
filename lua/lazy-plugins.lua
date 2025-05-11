@@ -31,6 +31,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>at', function()
         vim.fn.feedkeys 'q:iAsyncRun -mode=term -pos=tab '
       end, { desc = 'Async Run Command in new terminal' })
+      vim.keymap.set('n', '<leader>as', '<cmd>AsyncStop<CR>', { desc = 'stop command' })
     end,
   },
   {
