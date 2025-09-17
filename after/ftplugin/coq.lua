@@ -1,11 +1,4 @@
 vim.cmd 'highlight DiagnosticVirtualTextInfo ctermfg = 10 guifg=LightGreen'
-vim.lsp.start {
-  name = 'coq-lsp',
-  cmd = { 'coq-lsp' },
-  filetypes = { 'coq' },
-  root_dir = vim.fs.root(0, { '_CoqProject' }),
-  single_file_support = true,
-}
 vim.diagnostic.config {
   underline = false,
   signs = { severity = { min = vim.diagnostic.severity.E } },
@@ -13,7 +6,12 @@ vim.diagnostic.config {
     severity = { min = vim.diagnostic.severity.ERROR },
   },
 }
-
+vim.cmd [[set conceallevel=2
+call matchadd('Conceal', 'forall', 0, -1, {'conceal': '∀'})
+call matchadd('Conceal', '\\/', 0, -1, {'conceal' : '∨'})
+call matchadd('Conceal', '/\\', 0, -1, {'conceal' : '∧'})
+highlight Conceal ctermfg = 106 guifg=#8da101
+]]
 --[[ vim.keymap.set('n', '<leader>Cr', function()
   vim.cmd 'vsplit'
   vim.cmd 'terminal'

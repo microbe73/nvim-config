@@ -70,4 +70,5 @@ vim.cmd 'set autochdir'
 vim.cmd 'autocmd BufNewFile,BufRead *.fs set filetype=forth'
 vim.diagnostic.config { virtual_text = true }
 -- color
-vim.cmd 'set background=dark'
+vim.cmd 'set background=light'
+vim.cmd 'packadd cfilter'
