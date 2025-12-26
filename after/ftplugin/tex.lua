@@ -1,8 +1,8 @@
-local Rule = require('nvim-autopairs.rule')
-local npairs = require('nvim-autopairs')
-
-npairs.add_rule(Rule("$"," $","tex"))
-vim.keymap.set('n', '<leader>mn', '<cmd>read MathNotes.tex<CR>', { desc = 'copy notes template into file' })
+-- local Rule = require('nvim-autopairs.rule')
+-- local npairs = require('nvim-autopairs')
+--
+-- npairs.add_rule(Rule("$"," $","tex"))
+vim.keymap.set('n', '<leader>mn', '<cmd>read MathNotes.tex<CR>', { desc = 'copy notes template into file', buffer = true })
 vim.cmd 'highlight Conceal ctermfg = 106 guifg=#8da101'
 vim.diagnostic.config {
   underline = false,
@@ -12,4 +12,4 @@ vim.diagnostic.config {
   },
 }
 vim.keymap.set('i', '<C-f>', '<Esc>f$a')
-vim.cmd 'set textwidth=94'
+vim.cmd 'set textwidth=93'

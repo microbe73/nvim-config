@@ -63,9 +63,12 @@ return {
   --  s({ trig = ';l', snippetType = 'autosnippet' }, {
   --    t '\\lambda',
   --  }),
-  --  s({ trig = ';s', snippetType = 'autosnippet' }, {
-  --    t '\\sigma',
-  --  }),
+   s({ trig = ';-', snippetType = 'autosnippet' }, {
+     t '\\implies',
+   }),
+   s({ trig = ';|', snippetType = 'autosnippet' }, {
+     t '\\vdash',
+   }),
 
   s({ trig = ';o', snippetType = 'autosnippet' }, {
     t '\\aleph',
@@ -147,7 +150,20 @@ return {
       }
     )
   ),
-
+  s(
+    { trig = 'Mtx', snippetType = 'autosnippet' },
+    fmta(
+      [[
+      \begin{bmatrix} <> & <> \\ <> & <> \end{bmatrix}
+    ]],
+      {
+        i(1),
+        i(2),
+        i(3),
+        i(4)
+      }
+    )
+  ),
   s(
     { trig = 'Pict', snippetType = 'autosnippet' },
     fmta(

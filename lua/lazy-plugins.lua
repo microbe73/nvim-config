@@ -4,12 +4,10 @@ require('lazy').setup({
     lazy = false,
     priority = 1000,
     config = function()
-      -- Optionally configure and load the colorscheme
-      -- directly inside the plugin declaration.
-      vim.g.everforest_background = 'soft'
+      vim.g.everforest_background = 'hard'
       vim.g.everforest_better_performance = 1
       vim.g.everforest_enable_italic = false
-      vim.cmd.colorscheme 'everforest'
+      vim.cmd 'colorscheme everforest'
     end,
   },
   {
@@ -28,29 +26,17 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>as', '<cmd>AsyncStop<CR>', { desc = 'stop command' })
     end,
   },
-  {
-    'echasnovski/mini.ai',
-    version = '*',
-    config = function()
-      require('mini.ai').setup { n_lines = 500 }
-    end,
-  },
-  {
-    'ronakg/quickr-preview.vim',
-    config=function ()
-      vim.cmd [[
-        let g:quickr_preview_keymaps = 0
-        let g:quickr_preview_modifiable = 0
-        let g:quickr_preview_size = 10
-        let g:quickr_preview_on_cursor = 0
-        let g:quickr_preview_position = 'above'
-      ]]
-      vim.cmd 'nmap <leader>qp <plug>(quickr_preview)'
-      vim.cmd 'nmap <leader>qc <plug>(quickr_preview_qf_close)'
-    end
-  },
+  -- {
+  --   'echasnovski/mini.ai',
+  --   version = '*',
+  --   enabled = false,
+  --   config = function()
+  --     require('mini.ai').setup { n_lines = 500 }
+  --   end,
+  -- },
   {
     'windwp/nvim-autopairs',
+    enabled = false,
     config = true
   },
   {
@@ -58,10 +44,8 @@ require('lazy').setup({
     event = 'VimEnter',
     config = function()
       require('which-key').setup()
-
-      -- Document existing key chains
       require('which-key').add {
-        { '<leader>w', group = 'Workspace' },
+        { '<leader>w', group = 'Wiki' },
         { '<leader>c', group = 'Code' },
         { '<leader>d', group = 'Document' },
         { '<leader>r', group = 'Rename' },
@@ -74,6 +58,7 @@ require('lazy').setup({
   },
   {
     'lewis6991/gitsigns.nvim',
+    enabled=false,
     opts = {
       signs = {
         add = { text = '+' },
@@ -83,6 +68,11 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
+  },
+  {
+    'tpope/vim-fugitive',
+    config = function ()
+    end
   },
   {
     'vimwiki/vimwiki',
@@ -100,11 +90,16 @@ require('lazy').setup({
     ft = 'uiua',
     init = function()
       vim.g.uiua_path = '~/.cargo/bin/uiua'
-      vim.g.uiua_dark_mode = true
+      if vim.opt.background == 'dark' then
+        vim.g.uiua_dark_mode = true
+      else
+        vim.g.uiua_dark_mode = false
+      end
     end,
   },
   {
     'lervag/vimtex',
+    lazy = false,
     init = function()
       -- Use init for configuration, don't use the more common "config".
       vim.g.vimtex_view_method = 'sioyek'
@@ -179,9 +174,24 @@ require('lazy').setup({
       end,
   },
   {
+    'whonore/Coqtail',
+    ft = 'coq',
+    init = function()
+      vim.cmd 'filetype plugin on'
+      vim.cmd "let b:coqtail_coq_path = '~/.opam/default/bin/'"
+      vim.cmd 'let g:coqtail_noimap=1'
+    end,
+  },
+  {
+    'nvim-mini/mini.icons',
+    priority = 500,
+    init = function ()
+    end
+  },
+  {
     'ibhagwan/fzf-lua',
     -- or if using mini.icons/mini.nvim
-    dependencies = { "echasnovski/mini.icons" },
+    dependencies = { { 'echasnovski/mini.icons', opts = {} } },
     opts = {},
     config = function()
       local fzf = require 'fzf-lua'
@@ -195,7 +205,7 @@ require('lazy').setup({
           },
         },
         winopts = {
-          preview = { hidden = true },
+          preview = { hidden = true, layout = "vertical" },
         },
       }, true)
       vim.keymap.set('n', '<leader>sf', fzf.files, { desc = 'Search Files' })
@@ -207,11 +217,10 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         fzf.files { cwd = '~/.config/nvim' }
       end, { desc = '[S]earch [N]eovim files' })
-      vim.keymap.set('n', '<leader>sw', function()
-        fzf.files { cwd = '~/vimwiki/' }
-      end, { desc = 'Search wiki files' })
-      vim.keymap.set('n', '<leader>sm', fzf.manpages, { desc = 'Search manual pages' })
+      vim.keymap.set('n', '<leader>sw', fzf.grep_cword, { desc = 'Grep word under cursor' })
       vim.keymap.set('n', '<leader>s/', fzf.grep_curbuf, { desc = 'Grep in current buffer' })
+      vim.keymap.set('n', '<leader>sm', fzf.manpages, { desc = 'Search manuals'})
+      vim.keymap.set('n', '<leader>st', fzf.tabs, { desc = 'Search open tabs'})
     end,
   },
   { -- Highlight, edit, and navigate code
@@ -237,46 +246,32 @@ require('lazy').setup({
     end,
   },
   {
-    'whonore/Coqtail',
-    ft = 'coq',
-    init = function()
-      vim.cmd 'filetype plugin on'
-      vim.cmd "let b:coqtail_coq_path = '~/.opam/default/bin/'"
-      vim.cmd 'let g:coqtail_noimap=1'
-    end,
+    'justinmk/vim-dirvish'
   },
-  {
-  'stevearc/oil.nvim',
-  ---@module 'oil'
-  ---@type oil.SetupOpts
-  opts = {},
+  -- {
+  -- 'stevearc/oil.nvim',
+  -- opts = {},
   -- Optional dependencies
-  dependencies = { { 'echasnovski/mini.icons', opts = {} } },
-  init = function()
-    require('oil').setup {
-      -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
-      default_file_explorer = true,
-      columns = {
-        'permissions',
-        'mtime',
-        'size',
-        'icon',
-      },
-      lsp_file_methods = {
-        -- Enable or disable LSP file operations
-        enabled = false,
-        -- Time to wait for LSP file operations to complete before skipping
-        timeout_ms = 1000,
-        -- Set to true to autosave buffers that are updated with LSP willRenameFiles
-        -- Set to "unmodified" to only save unmodified buffers
-        autosave_changes = false,
-      },
-      constrain_cursor = 'name',
-    }
-    vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
-    vim.keymap.set('n', '<leader>-', '<CMD>Oil --float<CR><CMD>set nu<CR><CMD>set rnu<CR>', { desc = 'Oil floating window' })
-  end,
-  },
+  -- dependencies = { { 'echasnovski/mini.icons', opts = {} } },
+  -- init = function()
+  --     require('oil').setup {
+  --       -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
+  --       default_file_explorer = true,
+  --       columns = {
+  --         'permissions',
+  --         'mtime',
+  --         'size',
+  --         'icon',
+  --       },
+  --       lsp_file_methods = {
+  --         -- Enable or disable LSP file operations
+  --         enabled = false,
+  --       },
+  --       constrain_cursor = 'name',
+  --     }
+  --   vim.keymap.set('n', '<leader>-', '<CMD>Oil --float<CR><CMD>set nu<CR><CMD>set rnu<CR>', { desc = 'Oil floating window' })
+  -- end,
+  -- },
   {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
@@ -321,7 +316,8 @@ require('lazy').setup({
         ['<C-f>'] = { 'fallback' },
         ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
         ['<C-space>'] = { 'show_documentation' },
-        ["<C-e>"] = { "hide", "show" }
+        ["<C-e>"] = { "hide", "show" },
+        ['<C-k>'] = {'fallback'}
       },
 
       appearance = {
@@ -334,8 +330,8 @@ require('lazy').setup({
       },
       -- (Default) Only show the documentation popup when manually triggered
       completion = {
-        documentation = { auto_show = true },
-        menu = { auto_show = true },
+        documentation = { auto_show = false },
+        menu = { auto_show = false },
         accept = {
           -- Write completions to the `.` register
           dot_repeat = true,
@@ -401,18 +397,14 @@ require('lazy').setup({
       'neovim/nvim-lspconfig',
       dependencies = {
         'saghen/blink.cmp',
-        "netmute/ctags-lsp.nvim",
-      { 'folke/neodev.nvim', enabled=false, opts = {},},
+      -- { 'folke/neodev.nvim', opts = {},},
       },
       config = function()
-        require("lspconfig").ctags_lsp.setup({
-              filetypes = { "ruby" },
-        })
         vim.api.nvim_create_autocmd('LspAttach', {
           group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
           callback = function(event)
             local map = function(keys, func, desc)
-              vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+            vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
             end
             map('gI', function()
               vim.lsp.buf.implementation { reuse_win = true }
@@ -421,8 +413,9 @@ require('lazy').setup({
             map('<leader>D', function()
               vim.lsp.buf.type_definition { reuse_win = true }
             end, 'Type [D]efinition')
-            map('<leader>ds', vim.lsp.buf.document_symbol, '[D]ocument [S]ymbols')
-            map('<leader>ws', vim.lsp.buf.workspace_symbol, '[W]orkspace [S]ymbols')
+            local fzf = require('fzf-lua')
+            map('<leader>ds', fzf.lsp_document_symbols, '[D]ocument [S]ymbols')
+            map('<leader>ws', fzf.lsp_workspace_symbols, '[W]orkspace [S]ymbols')
             map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
             map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
             map('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -444,19 +437,18 @@ require('lazy').setup({
         })
         local servers = {
           clangd = {},
-          rust_analyzer = {
-            settings = {
-              ['rust-analyzer'] = {
-                diagnostics = {
-                  enable = false,
-                  refreshSupport = false,
-                },
-              },
-            },
-          },
+          -- rust_analyzer = {
+          --   settings = {
+          --     ['rust-analyzer'] = {
+          --       diagnostics = {
+          --         enable = false,
+          --         refreshSupport = false,
+          --       },
+          --     },
+          --   },
+          -- },
           texlab = {},
-          basedpyright = {
-          },
+          basedpyright = {},
           millet = {
             name = 'millet',
             cmd = { 'millet-ls' },
@@ -486,7 +478,7 @@ require('lazy').setup({
   },
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'echasnovski/mini.icons' },
+    dependencies = { {'echasnovski/mini.icons', opts = { } } },
     init = function()
       require('lualine').setup {
         options = {
@@ -570,9 +562,6 @@ require('lazy').setup({
       map('n', '<A-4>', '<Cmd>LualineBuffersJump! 4<CR>', opts)
       map('n', '<A-5>', '<Cmd>LualineBuffersJump! 5<CR>', opts)
       map('n', '<A-6>', '<Cmd>LualineBuffersJump! 6<CR>', opts)
-      map('n', '<A-7>', '<Cmd>LualineBuffersJump! 7<CR>', opts)
-      map('n', '<A-8>', '<Cmd>LualineBuffersJump! 8<CR>', opts)
-      map('n', '<A-9>', '<Cmd>LualineBuffersJump! 9<CR>', opts)
       map('n', '<A-0>', '<Cmd>LualineBuffersJump! $<CR>', opts)
       map('n', '<A-c>', '<Cmd>bdelete<CR>', opts)
     end,
